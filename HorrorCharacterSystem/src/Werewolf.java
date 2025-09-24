@@ -5,12 +5,12 @@ public class Werewolf extends HorrorCharacter {
     private int health;
     private ArrayList<Vulnerability> vulnerabilities = new ArrayList<Vulnerability>();
     private Transformable transformable;
+    private boolean transformed = false;
 
-    public Werewolf(String name, int health, Vulnerability v, Transformable t) {
+    public Werewolf(String name, int health, Vulnerability v) {
         this.name = name;
         this.health = health;
         vulnerabilities.add(v);
-        this.transformable = t;
         System.out.println(name + " the werewolf has appeared with health " + health + "!");
     }
 
@@ -39,6 +39,21 @@ public class Werewolf extends HorrorCharacter {
             System.out.print(v + " ");
         }
         System.out.println();
+    }
+
+    public void transform() {
+        transformable.transform();
+        transformed = true;
+        System.out.println(name + " transforms into a massive wolf!");
+    }
+
+    public void revert() {
+        transformable.revert();
+        transformed = false;
+        System.out.println(name + " reverts back to human form.");
+    }
+    public boolean isTransformed() {
+        return transformed;
     }
 
     public Werewolf() {

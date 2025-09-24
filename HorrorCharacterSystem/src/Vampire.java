@@ -12,13 +12,13 @@ public class Vampire extends HorrorCharacter {
     private int health;
     private ArrayList<Vulnerability> vulnerabilities = new ArrayList<Vulnerability>();
     private Transformable transformable;
+    private boolean isTransformed = false;
 
-    public Vampire(String name, int health, Vulnerability v, Transformable t) {
+    public Vampire(String name, int health, Vulnerability v) {
         this.name = name;
         this.health = health;
         vulnerabilities.add(v);
         System.out.println("A vampire named " + name + " with health " + health + " has emerged from the shadows!");
-        this.transformable = t;
     }
 
     @Override
@@ -54,23 +54,24 @@ public class Vampire extends HorrorCharacter {
     }
 
     public void transform() {
-        if (transformable != null) {
-            transformable.transform();
-            System.out.println(name + " transforms into a bat!");
-        } else {
-            System.out.println(name + " cannot transform.");
+        if (transformable == null) {
+            System.out.println(name + " cannot transform because no Transformable behavior is set.");
+            return;
         }
+        transformable.transform();
+        isTransformed = true;
+        System.out.println(name + " transforms into a bat!");
+
     }
 
     public void revert() {
-        if (transformable != null) {
-            transformable.revert();
-            System.out.println(name + " reverts back to human form.");
-        } else {
-            System.out.println(name + " cannot revert.");
-        }
+        transformable.revert();
+        isTransformed = false;
+        System.out.println(name + " reverts back to human form.");
+    }
 
-
+    public boolean isTransformed() {
+        return isTransformed;
     }
 
     public String toString() {
