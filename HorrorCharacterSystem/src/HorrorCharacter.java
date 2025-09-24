@@ -8,6 +8,4 @@ public abstract class HorrorCharacter {
     }
 
 
-    public abstract Vulnerability getVulnerability();
-
 }

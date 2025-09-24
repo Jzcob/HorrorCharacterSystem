@@ -1,10 +1,14 @@
+import java.util.ArrayList;
+
 public class Zombie extends HorrorCharacter {
     private String name;
     private int health;
+    private ArrayList<Vulnerability> vulnerabilities = new ArrayList<Vulnerability>();
 
-    public Zombie(String name, int health) {
+    public Zombie(String name, int health, Vulnerability v ) {
         this.name = name;
         this.health = health;
+        vulnerabilities.add(v);
         System.out.println("A zombie named " + name + " with health " + health + " has risen from the grave!");
     }
 
@@ -18,9 +22,15 @@ public class Zombie extends HorrorCharacter {
         System.out.println("The zombie shambles away slowly, groaning.");
     }
 
-    @Override
-    public Vulnerability getVulnerability() {
-        return Vulnerability.FIRE;
+    public void addVulnerability(Vulnerability v) {
+        vulnerabilities.add(v);
+    }
+    public void getVulnerabilities() {
+        System.out.print("The zombie's vulnerabilities are: ");
+        for (Vulnerability v : vulnerabilities) {
+            System.out.print(v + " ");
+        }
+        System.out.println();
     }
 
     public Zombie() {
