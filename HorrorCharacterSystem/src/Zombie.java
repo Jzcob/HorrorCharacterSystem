@@ -36,4 +36,8 @@ public class Zombie extends HorrorCharacter {
     public Zombie() {
         System.out.println("A zombie has risen from the grave!");
     }
+
+    public String toString() {
+        return "Zombie{name='" + name + "', health=" + health + ", vulnerabilities=" + vulnerabilities + "}";
+    }
 }
