@@ -11,29 +11,27 @@ public class Main {
      * @param args Command line arguments (not used).
      */
     public static void main(String[] args) {
-
+        ArrayList<HorrorCharacter> monsters = new ArrayList<>();
 
         Vampire vampire = new Vampire("Count Von Fang", 100, HorrorCharacter.Vulnerability.GARLIC);
         Werewolf werewolf = new Werewolf("Howl Blackwood", 120, HorrorCharacter.Vulnerability.SILVER);
         Zombie zombie = new Zombie("Patchwork Pete", 80, HorrorCharacter.Vulnerability.FIRE);
 
+        monsters.add(vampire);
+        monsters.add(werewolf);
+        monsters.add(zombie);
+
         vampire.addVulnerability(HorrorCharacter.Vulnerability.SUNLIGHT);
         werewolf.addVulnerability(HorrorCharacter.Vulnerability.HOLY_WATER);
         zombie.addVulnerability(HorrorCharacter.Vulnerability.SILVER);
 
-        vampire.attack();
-        vampire.flee();
-        werewolf.attack();
-        werewolf.flee();
-        zombie.attack();
-        zombie.flee();
+        for (HorrorCharacter monster : monsters) {
+            monster.attack();
+            monster.flee();
+            System.out.println("--------------------");
+        }
 
         vampire.transform();
-        werewolf.transform();
-
         vampire.attack();
-        werewolf.attack();
-        vampire.revert();
-        werewolf.revert();
     }
 }
